@@ -39,6 +39,13 @@ public interface RaceManager {
     Race getRaceFromName(String name);
 
     /**
+     * Returns the RacePlayer for the given player
+     *
+     * @param player the offline player you want to get the RacePlayer for
+     * @return the RacePlayer for the given player
+     */
+    RacePlayer getRacePlayer(OfflinePlayer player);
+    /**
      * Gets the player's race data for the specified race
      *
      * @param player the player you want to get data from
