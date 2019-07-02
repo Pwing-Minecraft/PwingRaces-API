@@ -1,6 +1,7 @@
 package net.pwing.races.api.race.ability;
 
 import net.pwing.races.api.race.Race;
+
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
