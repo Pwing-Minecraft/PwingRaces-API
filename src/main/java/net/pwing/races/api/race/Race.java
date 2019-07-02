@@ -1,8 +1,10 @@
 package net.pwing.races.api.race;
 
+import net.pwing.races.api.race.ability.RaceAbility;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -175,4 +177,55 @@ public interface Race {
      * @return the amount of skillpoints received for the level
      */
     int getSkillpointsForLevel(int level);
+
+    /**
+     * Returns the level map for race experience per level
+     *
+     * Key: the level
+     * Value: experience for the level
+     *
+     * @return the level map for race experience per level
+     */
+    Map<Integer, Integer> getRaceLevelMap();
+
+    /**
+     * Sets the level map for race experience per level
+     *
+     * @param raceLevelMap the race level map you want to set
+     */
+    void setRaceLevelMap(Map<Integer, Integer> raceLevelMap);
+
+    /**
+     * Returns the skillpoint map for skillpoints per level
+     *
+     * Key: the level
+     * Value: skillpoints for the level
+     *
+     * @return tthe skillpoint map for skillpoints per level
+     */
+    Map<Integer, Integer> getRaceSkillpointsMap();
+
+    /**
+     * Sets the skillpoints map for skillpoints per level
+     *
+     * @param raceSkillpointsMap the skillpoints map you want to set
+     */
+    void setRaceSkillpointsMap(Map<Integer, Integer> raceSkillpointsMap);
+
+    /**
+     * Returns a map of the race abilities with their requirement as the key
+     *
+     * Key: the race requirement (none, level or skilltree element)
+     * Value: the list of abilities for the specified requirement
+     *
+     * @return a map of the race abilities
+     */
+    Map<String, List<RaceAbility>> getRaceAbilitiesMap();
+
+    /**
+     * Sets the race abilities map with their requirement as the key
+     *
+     * @param raceAbilitiesMap a map of the race abilities
+     */
+    void setRaceAbilitiesMap(Map<String, List<RaceAbility>> raceAbilitiesMap);
 }

@@ -1,5 +1,6 @@
 package net.pwing.races.api.race;
 
+import net.pwing.races.api.race.ability.RaceAbilityManager;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -70,6 +71,20 @@ public interface RaceManager {
     void registerPlayer(Player player, boolean override);
 
     /**
+     * Returns the ability manager
+     *
+     * @return the ability manager
+     */
+    RaceAbilityManager getAbilityManager();
+
+    /**
+     * Returns the race menu object
+     *
+     * @return the race menu object
+     */
+    RaceMenu getRaceMenu();
+
+    /**
      * Returns if races is enabled in the specified world
      *
      * @param world the world you want to check if races is enabled in
@@ -92,6 +107,5 @@ public interface RaceManager {
      *
      * @return a map of all the players registered into memory
      */
-
     Map<UUID, RacePlayer> getRacePlayerMap();
 }
