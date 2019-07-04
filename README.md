@@ -29,7 +29,8 @@ Take a look inside the repository to view what each method does.
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         RaceManager raceManager = PwingRacesAPI.getRaceManager();
-        player.sendMessage("Your active race is currently: " + raceManager.getRacePlayer(player).getActiveRace().getName());
+        RacePlayer racePlayer = raceManager.getRacePlayer(player);
+        player.sendMessage("Your active race is currently: " + racePlayer.getActiveRace().getName());
     }
 ```
 
