@@ -6,7 +6,7 @@ import java.util.List;
 import org.bukkit.entity.Player;
 
 /**
- * RaceTrigger API implementation
+ * RaceTriggerManager API implementation
  *
  * @author Redned
  */

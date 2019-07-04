@@ -3,7 +3,7 @@ package net.pwing.races.api.race.trigger;
 import org.bukkit.entity.Player;
 
 /**
- * RaceTrigger API implementation
+ * RaceTriggerManager API implementation
  *
  * @author Redned
  */
