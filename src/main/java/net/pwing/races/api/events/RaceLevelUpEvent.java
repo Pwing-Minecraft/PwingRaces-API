@@ -20,8 +20,6 @@ public class RaceLevelUpEvent extends PlayerEvent {
     private int oldLevel;
     private int newLevel;
 
-    private boolean cancelled;
-
     public RaceLevelUpEvent(Player player, Race race, int oldLevel, int newLevel) {
         super(player);
 
