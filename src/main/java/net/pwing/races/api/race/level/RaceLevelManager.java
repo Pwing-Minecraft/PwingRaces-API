@@ -22,12 +22,14 @@ public interface RaceLevelManager {
 
     /**
      * Sets the level of the player's race
+     * Returns if the race setting was successful
      *
      * @param player the player to set the level for
      * @param race the player's race to set the level for
      * @param level the level
+     * @return if the race setting was successful
      */
-    void setLevel(Player player, Race race, int level);
+    boolean setLevel(Player player, Race race, int level);
 
     /**
      * Returns if the player's race is able to level up
