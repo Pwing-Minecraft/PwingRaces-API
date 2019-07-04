@@ -3,6 +3,7 @@ package net.pwing.races.api.race;
 import net.pwing.races.api.race.ability.RaceAbility;
 import net.pwing.races.api.race.permission.RacePermission;
 
+import net.pwing.races.api.race.trigger.RaceTrigger;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
@@ -230,6 +231,23 @@ public interface Race {
      * @param raceAbilitiesMap a map of the race abilities
      */
     void setRaceAbilitiesMap(Map<String, List<RaceAbility>> raceAbilitiesMap);
+
+    /**
+     * Returns a map of the race triggers with their requirement as the key
+     *
+     * Key: the race requirement (none, level or skilltree element)
+     * Value: the list of triggers for the specified requirement
+     *
+     * @return a map of the race triggers
+     */
+    Map<String, List<RaceTrigger>> getRaceTriggersMap();
+
+    /**
+     * Sets the race triggers map with the requirement as the key
+     *
+     * @param raceTriggersMap a map of the race triggers
+     */
+    void setRaceTriggersMap(Map<String, List<RaceTrigger>> raceTriggersMap);
 
     /**
      * Returns a map of the permissions with their requirement as the key

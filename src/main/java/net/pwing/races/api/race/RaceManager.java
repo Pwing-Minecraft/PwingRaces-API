@@ -5,6 +5,7 @@ import net.pwing.races.api.race.level.RaceLevelManager;
 import net.pwing.races.api.race.permission.RacePermissionManager;
 import net.pwing.races.api.race.skilltree.RaceSkilltreeManager;
 
+import net.pwing.races.api.race.trigger.RaceTriggerManager;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -101,6 +102,13 @@ public interface RaceManager {
      * @return the skilltree manager
      */
     RaceSkilltreeManager getSkilltreeManager();
+
+    /**
+     * Returns the trigger manager
+     *
+     * @return the trigger manager
+     */
+    RaceTriggerManager getTriggerManager();
 
     /**
      * Returns the race menu object

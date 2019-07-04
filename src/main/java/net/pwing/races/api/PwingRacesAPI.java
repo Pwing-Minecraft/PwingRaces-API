@@ -5,6 +5,7 @@ import net.pwing.races.api.race.ability.RaceAbilityManager;
 import net.pwing.races.api.race.level.RaceLevelManager;
 import net.pwing.races.api.race.permission.RacePermissionManager;
 import net.pwing.races.api.race.skilltree.RaceSkilltreeManager;
+import net.pwing.races.api.race.trigger.RaceTriggerManager;
 
 /**
  * Main class for the PwingRaces API
@@ -71,5 +72,14 @@ public class PwingRacesAPI {
      */
     public static RaceSkilltreeManager getSkilltreeManager() {
         return raceManager.getSkilltreeManager();
+    }
+
+    /**
+     * Returns the trigger manager
+     *
+     * @return the trigger manager
+     */
+    public static RaceTriggerManager getTriggerManager() {
+        return raceManager.getTriggerManager();
     }
 }
