@@ -2,6 +2,7 @@ package net.pwing.races.api.race.trigger;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.bukkit.entity.Player;
 
@@ -79,4 +80,15 @@ public interface RaceTriggerManager {
      * @param delay the delay
      */
     void setDelay(Player player, String trigger, int delay);
+
+    /**
+     * Returns a map of the trigger passives with the key
+     * being the name of the trigger passive
+     *
+     * Key: the name of the trigger passive
+     * Value: the trigger passive
+     *
+     * @return a map of the trigger passives
+     */
+    Map<String, RaceTriggerPassive> getTriggerPassives();
 }
