@@ -5,13 +5,42 @@ Pwing Races API
 This repository serves as a public API for those wanting to create addons or hooks to Pwing Races without having to purchase the plugin. 
 On its own, this API will not do anything for you, so attempting to compile and run this as a plugin won't get you very far.
 
-**NOTE:** This API is not complete and still has a LONG way to go.
-
 How to Use:
 ===
+The API for PwingRaces is quite expansive, and there is a lot to cover. 
+Because of this, most of the information can be found in the [PwingRaces API Wiki](https://github.com/Pwing-Minecraft/PwingRaces-API/wiki). However, a basic rundown is given below.
 
-Coming soon...
+The bulk of the PwingRaces API is broken down into 7 different managers listed below.
 
+* RaceManager
+  * RaceAbilityManager
+  * RaceAttributeManager
+  * RaceLevelManager
+  * RacePermissionManager
+  * RaceSkilltreeManager
+  * RaceTriggerManager
+
+If you want to access these managers, the class you will want to use is the [`PwingRacesAPI`](https://github.com/Pwing-Minecraft/PwingRaces-API/blob/master/src/main/java/net/pwing/races/api/PwingRacesAPI.java) class.
+Take a look inside the repository to view what each method does.
+
+### Code Example:
+```java
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        RaceManager raceManager = PwingRacesAPI.getRaceManager();
+        player.sendMessage("Your active race is currently: " + raceManager.getRacePlayer(player).getActiveRace());
+    }
+```
+
+### Creating Abilities
+View the [Creating Abilities] page on the wiki.
+
+### Calling Triggers and Creating Trigger Passives
+View the [Manipulating Triggers] page on the wiki.
+
+### Creating Custom Attributes
+View the [Creating Custom Attributes] page on the wiki.
 
 How to Import:
 ===
@@ -32,6 +61,7 @@ Add the dependency:
         <groupId>com.github.Pwing-Minecraft</groupId>
         <artifactId>PwingRaces-API</artifactId>
         <version>-SNAPSHOT</version>
+        <scope>provided</scope>
     </dependency>
 ```
 
