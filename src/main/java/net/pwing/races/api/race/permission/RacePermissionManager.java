@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.bukkit.entity.Player;
 
 /**
- * RacePermission API implementation
+ * RacePermissionPermission API implementation
  *
  * @author Redned
  */

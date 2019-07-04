@@ -1,8 +1,8 @@
 package net.pwing.races.api.race;
 
 import net.pwing.races.api.race.ability.RaceAbility;
-
 import net.pwing.races.api.race.permission.RacePermission;
+
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
