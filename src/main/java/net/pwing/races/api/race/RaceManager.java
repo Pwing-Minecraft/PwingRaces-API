@@ -2,6 +2,7 @@ package net.pwing.races.api.race;
 
 import net.pwing.races.api.race.ability.RaceAbilityManager;
 import net.pwing.races.api.race.level.RaceLevelManager;
+import net.pwing.races.api.race.permission.RacePermissionManager;
 import net.pwing.races.api.race.skilltree.RaceSkilltreeManager;
 
 import org.bukkit.OfflinePlayer;
@@ -86,6 +87,13 @@ public interface RaceManager {
      * @return the level manager
      */
     RaceLevelManager getLevelManager();
+
+    /**
+     * Returns the permission manager
+     *
+     * @return the permission manager
+     */
+    RacePermissionManager getPermissionManager();
 
     /**
      * Returns the skilltree manager
