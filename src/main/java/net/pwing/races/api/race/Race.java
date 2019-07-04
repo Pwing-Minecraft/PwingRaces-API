@@ -1,6 +1,7 @@
 package net.pwing.races.api.race;
 
 import net.pwing.races.api.race.ability.RaceAbility;
+import net.pwing.races.api.race.attribute.RaceAttribute;
 import net.pwing.races.api.race.permission.RacePermission;
 import net.pwing.races.api.race.trigger.RaceTrigger;
 
@@ -231,6 +232,23 @@ public interface Race {
      * @param raceAbilitiesMap a map of the race abilities
      */
     void setRaceAbilitiesMap(Map<String, List<RaceAbility>> raceAbilitiesMap);
+
+    /**
+     * Returns a map of the race attributes with their requirement as the key
+     *
+     * Key: the race requirement (none, level or skilltree element)
+     * Value: the list of attributes for the specified requirement
+     *
+     * @return a map of the race attributes
+     */
+    Map<String, List<RaceAttribute>> getRaceAttributesMap();
+
+    /**
+     * Sets the race attributes map with the requirement as the key
+     *
+     * @param raceAttributesMap a map of the race triggers
+     */
+    void setRaceAttributesMap(Map<String, List<RaceAttribute>> raceAttributesMap);
 
     /**
      * Returns a map of the race triggers with their requirement as the key

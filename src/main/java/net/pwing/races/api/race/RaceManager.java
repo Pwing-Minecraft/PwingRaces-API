@@ -1,6 +1,7 @@
 package net.pwing.races.api.race;
 
 import net.pwing.races.api.race.ability.RaceAbilityManager;
+import net.pwing.races.api.race.attribute.RaceAttributeManager;
 import net.pwing.races.api.race.level.RaceLevelManager;
 import net.pwing.races.api.race.permission.RacePermissionManager;
 import net.pwing.races.api.race.skilltree.RaceSkilltreeManager;
@@ -81,6 +82,13 @@ public interface RaceManager {
      * @return the ability manager
      */
     RaceAbilityManager getAbilityManager();
+
+    /**
+     * Returns the attribute manager
+     *
+     * @return the attribute manager
+     */
+    RaceAttributeManager getAttributeManager();
 
     /**
      * Returns the level manager
