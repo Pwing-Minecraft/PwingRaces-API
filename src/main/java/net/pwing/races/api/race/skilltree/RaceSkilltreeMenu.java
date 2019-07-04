@@ -1,6 +1,5 @@
 package net.pwing.races.api.race.skilltree;
 
-import net.pwing.races.api.race.RaceManager;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
