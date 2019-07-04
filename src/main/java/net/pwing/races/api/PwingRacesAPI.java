@@ -1,6 +1,10 @@
 package net.pwing.races.api;
 
 import net.pwing.races.api.race.RaceManager;
+import net.pwing.races.api.race.ability.RaceAbilityManager;
+import net.pwing.races.api.race.level.RaceLevelManager;
+import net.pwing.races.api.race.permission.RacePermissionManager;
+import net.pwing.races.api.race.skilltree.RaceSkilltreeManager;
 
 /**
  * Main class for the PwingRaces API
@@ -31,5 +35,41 @@ public class PwingRacesAPI {
         }
 
         PwingRacesAPI.raceManager = raceManager;
+    }
+
+    /**
+     * Returns the ability manager
+     *
+     * @return the ability manager
+     */
+    public static RaceAbilityManager getAbilityManager() {
+        return raceManager.getAbilityManager();
+    }
+
+    /**
+     * Returns the level manager
+     *
+     * @return the level manager
+     */
+    public static RaceLevelManager getLevelManager() {
+        return raceManager.getLevelManager();
+    }
+
+    /**
+     * Returns the permission manager
+     *
+     * @return the permission manager
+     */
+    public static RacePermissionManager getPermissionManager() {
+        return raceManager.getPermissionManager();
+    }
+
+    /**
+     * Returns the skilltree manager
+     *
+     * @return the skilltree manager
+     */
+    public static RaceSkilltreeManager getSkilltreeManager() {
+        return raceManager.getSkilltreeManager();
     }
 }
