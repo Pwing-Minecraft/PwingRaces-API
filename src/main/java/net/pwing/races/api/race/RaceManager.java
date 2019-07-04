@@ -1,6 +1,7 @@
 package net.pwing.races.api.race;
 
 import net.pwing.races.api.race.ability.RaceAbilityManager;
+import net.pwing.races.api.race.skilltree.RaceSkilltreeManager;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
@@ -77,6 +78,13 @@ public interface RaceManager {
      * @return the ability manager
      */
     RaceAbilityManager getAbilityManager();
+
+    /**
+     * Returns the skilltree manager
+     *
+     * @return the skilltree manager
+     */
+    RaceSkilltreeManager getSkilltreeManager();
 
     /**
      * Returns the race menu object
