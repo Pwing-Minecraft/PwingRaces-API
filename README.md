@@ -35,13 +35,13 @@ Take a look inside the repository to view what each method does.
 ```
 
 ### Creating Abilities
-View the [Creating Abilities] page on the wiki.
+View the [Creating Abilities](https://github.com/Pwing-Minecraft/PwingRaces-API/wiki/Creating-Abilities) page on the wiki.
 
 ### Calling Triggers and Creating Trigger Passives
-View the [Manipulating Triggers] page on the wiki.
+View the [Manipulating Triggers](https://github.com/Pwing-Minecraft/PwingRaces-API/wiki/Creating-Abilities) page on the wiki.
 
 ### Creating Custom Attributes
-View the [Creating Custom Attributes] page on the wiki.
+View the [Creating Custom Attributes](https://github.com/Pwing-Minecraft/PwingRaces-API/wiki/Creating-Custom-Attributes) page on the wiki.
 
 How to Import:
 ===
