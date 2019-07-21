@@ -1,5 +1,6 @@
-package net.pwing.races.api.race;
+package net.pwing.races.api.race.menu;
 
+import net.pwing.races.api.race.Race;
 import org.bukkit.entity.Player;
 
 /**

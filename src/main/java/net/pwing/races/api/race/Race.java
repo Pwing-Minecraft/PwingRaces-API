@@ -2,6 +2,7 @@ package net.pwing.races.api.race;
 
 import net.pwing.races.api.race.ability.RaceAbility;
 import net.pwing.races.api.race.attribute.RaceAttribute;
+import net.pwing.races.api.race.menu.RaceIconData;
 import net.pwing.races.api.race.permission.RacePermission;
 import net.pwing.races.api.race.trigger.RaceTrigger;
 
@@ -103,60 +104,18 @@ public interface Race {
     void setRaceItems(Map<String, ItemStack> raceItems);
 
     /**
-     * Returns the unlocked race icon
+     * Returns the data for the race's icon
      *
-     * @return the unlocked race icon
+     * @return the data for the race's icons
      */
-    ItemStack getUnlockedIcon();
+    RaceIconData getIconData();
 
     /**
-     * Sets the unlocked icon of the race
+     * Sets the icon data for the race
      *
-     * @param unlockedIcon the unlocked icon of the race
+     * @param iconData the data for the race's icon
      */
-    void setUnlockedIcon(ItemStack unlockedIcon);
-
-    /**
-     * Returns the selected icon of the race
-     *
-     * @return the selected icon of the race
-     */
-    ItemStack getSelectedIcon();
-
-    /**
-     * Sets the selected icon of the race
-     *
-     * @param selectedIcon the selected icon of the race
-     */
-    void setSelectedIcon(ItemStack selectedIcon);
-
-    /**
-     * Returns the locked icon of the race
-     *
-     * @return the locked icon of the race
-     */
-    ItemStack getLockedIcon();
-
-    /**
-     * Sets the locked icon of the race
-     *
-     * @param lockedIcon the locked icon of the race
-     */
-    void setLockedIcon(ItemStack lockedIcon);
-
-    /**
-     * Returns the icon slot of the race
-     *
-     * @return the icon slot of the race
-     */
-    int getIconSlot();
-
-    /**
-     * Sets the icon slot of the race
-     *
-     * @param iconSlot the icon slot of the race
-     */
-    void setIconSlot(int iconSlot);
+    void setIconData(RaceIconData iconData);
 
     /**
      * Returns if the level is the max level of the race
