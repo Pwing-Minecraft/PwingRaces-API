@@ -27,6 +27,20 @@ public interface Race {
     String getName();
 
     /**
+     * Returns the display name of the race
+     *
+     * @return the display name of the race
+     */
+    String getDisplayName();
+
+    /**
+     * Sets the display name of the race
+     *
+     * @param displayName the display name of the race
+     */
+    void setDisplayName(String displayName);
+
+    /**
      * Returns if the race needs to be unlocked
      *
      * @return if the race needs to be unlocked
