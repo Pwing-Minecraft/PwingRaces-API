@@ -54,7 +54,7 @@ public interface RaceManager {
      */
     RacePlayer getRacePlayer(OfflinePlayer player);
     /**
-     * Gets the player's race data for the specified race
+     * Returns the player's race data for the specified race
      *
      * @param player the player you want to get data from
      * @param race the race you want to get data from
