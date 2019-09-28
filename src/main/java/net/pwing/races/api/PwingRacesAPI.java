@@ -1,5 +1,6 @@
 package net.pwing.races.api;
 
+import net.pwing.races.api.module.RaceModuleManager;
 import net.pwing.races.api.race.RaceManager;
 import net.pwing.races.api.race.ability.RaceAbilityManager;
 import net.pwing.races.api.race.attribute.RaceAttributeManager;
@@ -16,6 +17,7 @@ import net.pwing.races.api.race.trigger.RaceTriggerManager;
 public class PwingRacesAPI {
 
     private static RaceManager raceManager;
+    private static RaceModuleManager moduleManager;
 
     /**
      * Returns the race manager
@@ -37,6 +39,28 @@ public class PwingRacesAPI {
         }
 
         PwingRacesAPI.raceManager = raceManager;
+    }
+
+    /**
+     * Returns the module manager
+     *
+     * @return the module manager
+     */
+    public static RaceModuleManager getModuleManager() {
+        return moduleManager;
+    }
+
+    /**
+     * Sets the module manager, called on server startup
+     *
+     * @param moduleManager the module manager
+     */
+    public static void setModuleManager(RaceModuleManager moduleManager) {
+        if (PwingRacesAPI.moduleManager != null) {
+            throw new UnsupportedOperationException("Cannot redefine singleton RaceModuleManager!");
+        }
+
+        PwingRacesAPI.moduleManager = moduleManager;
     }
 
     /**

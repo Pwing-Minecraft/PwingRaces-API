@@ -6,8 +6,8 @@ import net.pwing.races.api.race.level.RaceLevelManager;
 import net.pwing.races.api.race.menu.RaceMenu;
 import net.pwing.races.api.race.permission.RacePermissionManager;
 import net.pwing.races.api.race.skilltree.RaceSkilltreeManager;
-
 import net.pwing.races.api.race.trigger.RaceTriggerManager;
+
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
