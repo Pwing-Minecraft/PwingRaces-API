@@ -10,7 +10,7 @@ How to Use:
 The API for PwingRaces is quite expansive, and there is a lot to cover. 
 Because of this, most of the information can be found in the [PwingRaces API Wiki](https://github.com/Pwing-Minecraft/PwingRaces-API/wiki). However, a basic rundown is given below.
 
-The bulk of the PwingRaces API is broken down into 7 different managers listed below.
+The bulk of the PwingRaces API is broken down into 8 different managers listed below.
 
 * RaceManager
   * RaceAbilityManager
@@ -19,6 +19,8 @@ The bulk of the PwingRaces API is broken down into 7 different managers listed b
   * RacePermissionManager
   * RaceSkilltreeManager
   * RaceTriggerManager
+  
+* RaceModuleManager
 
 If you want to access these managers, the class you will want to use is the [`PwingRacesAPI`](https://github.com/Pwing-Minecraft/PwingRaces-API/blob/master/src/main/java/net/pwing/races/api/PwingRacesAPI.java) class.
 Take a look inside the repository to view what each method does.
