@@ -13,6 +13,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -44,7 +45,14 @@ public interface RaceManager {
      * @param name the name of the race you want to find
      * @return the race from the name
      */
-    Race getRaceFromName(String name);
+    default Optional<Race> getRaceFromName(String name) {
+        for (Race race : getRaces()) {
+            if (race.getName().equalsIgnoreCase(name))
+                return Optional.of(race);
+        }
+
+        return Optional.empty();
+    }
 
     /**
      * Returns the RacePlayer for the given player
@@ -52,7 +60,10 @@ public interface RaceManager {
      * @param player the offline player you want to get the RacePlayer for
      * @return the RacePlayer for the given player
      */
-    RacePlayer getRacePlayer(OfflinePlayer player);
+    default RacePlayer getRacePlayer(OfflinePlayer player) {
+        return getRacePlayerMap().get(player.getUniqueId());
+    }
+
     /**
      * Returns the player's race data for the specified race
      *
@@ -60,14 +71,18 @@ public interface RaceManager {
      * @param race the race you want to get data from
      * @return the player's race data for the specified race
      */
-    RaceData getPlayerData(OfflinePlayer player, Race race);
+    default RaceData getPlayerData(OfflinePlayer player, Race race) {
+        return getRacePlayer(player).getRaceData(race);
+    }
 
     /**
      * Registers a player's configs
      *
      * @param player the player whose config you want to create
      */
-    void registerPlayer(Player player);
+    default void registerPlayer(Player player) {
+        registerPlayer(player, false);
+    }
 
     /**
      * Registers a player's configs

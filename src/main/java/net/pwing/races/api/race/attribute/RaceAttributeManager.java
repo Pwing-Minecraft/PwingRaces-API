@@ -37,7 +37,6 @@ public interface RaceAttributeManager {
      */
     double getAttributeBonus(Player player, String attribute);
 
-
     /**
      * Returns a collection of attributes that can be
      * applied from the config of the player's active race.

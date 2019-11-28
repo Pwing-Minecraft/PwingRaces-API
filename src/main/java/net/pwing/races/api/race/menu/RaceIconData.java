@@ -2,6 +2,8 @@ package net.pwing.races.api.race.menu;
 
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Optional;
+
 /**
  * RaceIconData API implementation
  *
@@ -14,7 +16,7 @@ public interface RaceIconData {
      *
      * @return the locked icon for the race
      */
-    ItemStack getLockedIcon();
+    Optional<ItemStack> getLockedIcon();
 
     /**
      * Sets the locked icon for the race
@@ -42,7 +44,7 @@ public interface RaceIconData {
      *
      * @return the selected icon for the race
      */
-    ItemStack getSelectedIcon();
+    Optional<ItemStack> getSelectedIcon();
 
     /**
      * Sets the selected icon for the race

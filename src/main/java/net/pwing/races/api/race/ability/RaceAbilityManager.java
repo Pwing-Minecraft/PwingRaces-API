@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * RaceAbilityManager API implementation
@@ -49,7 +50,6 @@ public interface RaceAbilityManager {
      * Returns if the player has a cooldown with the
      * specified internal ability name
      *
-     *
      * @param player the player to check
      * @param interalName the internal name of the ability to check
      * @return if the player has a cooldown
@@ -85,5 +85,5 @@ public interface RaceAbilityManager {
      * @param config the config file you want to get the ability from
      * @return a new ability from a configuration file
      */
-    RaceAbility getAbility(String internalName, String requirement, String configPath, FileConfiguration config);
+    Optional<RaceAbility> getAbility(String internalName, String requirement, String configPath, FileConfiguration config);
 }

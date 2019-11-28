@@ -3,6 +3,7 @@ package net.pwing.races.api.race.skilltree;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * RaceSkilltree API implementation
@@ -115,5 +116,17 @@ public interface RaceSkilltree {
      * @param name the name of the skilltree element
      * @return the skilltree element from the specified name
      */
-    public RaceSkilltreeElement getElementFromName(String name);
+    default Optional<RaceSkilltreeElement> getElementFromName(String name) {
+        for (RaceSkilltreeElement element : getElements()) {
+            if (element.getInternalName().equals(name))
+                return Optional.of(element);
+
+            if (element.getTitle() != null && element.getTitle().isEmpty()) {
+                if (element.getTitle().equals(name))
+                    return Optional.of(element);
+            }
+        }
+
+        return Optional.empty();
+    }
 }

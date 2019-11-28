@@ -3,6 +3,7 @@ package net.pwing.races.api.race.skilltree;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * RaceSkilltreeElement API implementation
@@ -86,7 +87,7 @@ public interface RaceSkilltreeElement {
      *
      * @return the purchased icon for the skilltree element
      */
-    ItemStack getPurchasedIcon();
+    Optional<ItemStack> getPurchasedIcon();
 
     /**
      * Sets the purchased icon for the skilltree element
@@ -100,7 +101,7 @@ public interface RaceSkilltreeElement {
      *
      * @return the locked icon for the skilltree element
      */
-    ItemStack getLockedIcon();
+    Optional<ItemStack> getLockedIcon();
 
     /**
      * Sets the locked icon for the skilltree element

@@ -32,7 +32,7 @@ Take a look inside the repository to view what each method does.
         Player player = event.getPlayer();
         RaceManager raceManager = PwingRacesAPI.getRaceManager();
         RacePlayer racePlayer = raceManager.getRacePlayer(player);
-        player.sendMessage("Your active race is currently: " + racePlayer.getActiveRace().getName());
+        player.sendMessage("Your active race is currently: " + racePlayer.getRace().getName());
     }
 ```
 

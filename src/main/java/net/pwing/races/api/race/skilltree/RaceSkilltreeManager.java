@@ -1,6 +1,7 @@
 package net.pwing.races.api.race.skilltree;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * RaceSkilltreeManager API implementation
@@ -15,7 +16,14 @@ public interface RaceSkilltreeManager {
      * @param name the name of the skilltree
      * @return the skilltree with the specified name
      */
-    RaceSkilltree getSkilltreeFromName(String name);
+    default Optional<RaceSkilltree> getSkilltreeFromName(String name) {
+        for (RaceSkilltree skilltree : getSkilltrees()) {
+            if (skilltree.getName().equalsIgnoreCase(name) || skilltree.getInternalName().equalsIgnoreCase(name))
+                return Optional.of(skilltree);
+        }
+
+        return Optional.empty();
+    }
 
     /**
      * Returns a list of the skilltrees

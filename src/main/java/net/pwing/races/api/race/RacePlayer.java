@@ -3,6 +3,7 @@ package net.pwing.races.api.race;
 import org.bukkit.OfflinePlayer;
 
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * RacePlayer API implementation
@@ -23,7 +24,14 @@ public interface RacePlayer {
      *
      * @return the player's active race
      */
-    Race getActiveRace();
+    Optional<Race> getRace();
+
+    /**
+     * @deprecated replaced with {@link #getRace()};
+     */
+    default Race getActiveRace() {
+        return getRace().orElse(null);
+    }
 
     /**
      * Returns the player's active race
@@ -38,14 +46,18 @@ public interface RacePlayer {
      * @param race the race you want to get data for
      * @return the race data for the specified race
      */
-    RaceData getRaceData(Race race);
+    default RaceData getRaceData(Race race) {
+        return getRaceDataMap().get(race.getName());
+    }
 
     /**
      * Returns the race data for the player's active race
      *
      * @return the race data for the player's active race
      */
-    RaceData getActiveRaceData();
+    default Optional<RaceData> getActiveRaceData() {
+        return getRace().map(this::getRaceData);
+    }
 
     /**
      * Returns the data map for the player's races.

@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Race API implementation
@@ -73,14 +74,16 @@ public interface Race {
      *
      * @return if the race has a spawn location
      */
-    boolean hasSpawnLocation();
+    default boolean hasSpawnLocation() {
+        return getSpawnLocation().isPresent();
+    }
 
     /**
      * Returns the spawn location of the race
      *
      * @return the spawn location of the race
      */
-    Location getSpawnLocation();
+    Optional<Location> getSpawnLocation();
 
     /**
      * Sets the spawn location of the race
