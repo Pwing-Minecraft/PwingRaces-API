@@ -32,7 +32,12 @@ Take a look inside the repository to view what each method does.
         Player player = event.getPlayer();
         RaceManager raceManager = PwingRacesAPI.getRaceManager();
         RacePlayer racePlayer = raceManager.getRacePlayer(player);
-        player.sendMessage("Your active race is currently: " + racePlayer.getRace().getName());
+        Optional<Race> race = racePlayer.getRace();
+        if (!race.isPresent()) {
+            player.sendMessage("You do not currently have a race selected.");
+        } else {
+            player.sendMessage("Your active race is currently: " + racePlayer.getRace().get().getName());
+        }
     }
 ```
 
