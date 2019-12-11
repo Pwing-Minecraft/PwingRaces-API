@@ -19,6 +19,15 @@ public interface RacePermissionManager {
     void applyPermissions(Player player);
 
     /**
+     * Removes all the applicable permission specified in a race.
+     * This is generally called when a player switches from an old
+     * race.
+     *
+     * @param player the player to remove permissions to
+     */
+    void removePermissions(Player player);
+
+    /**
      * Returns a collection of the permissions the player can be
      * given/revoked from the config of the player's active race.
      *
