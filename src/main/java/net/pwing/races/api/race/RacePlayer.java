@@ -20,6 +20,15 @@ public interface RacePlayer {
     OfflinePlayer getPlayer();
 
     /**
+     * Returns if the player has a race active
+     *
+     * @return if the player has a race active
+     */
+    default boolean hasRace() {
+        return getRace().isPresent();
+    }
+
+    /**
      * Returns the player's active race
      *
      * @return the player's active race
