@@ -2,7 +2,7 @@ package net.pwing.races.api.module;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 public abstract class RaceModule {
 
-    protected JavaPlugin plugin;
+    protected Plugin plugin;
 
     protected boolean enabled = false;
 
