@@ -29,15 +29,9 @@ public interface RacePlayer {
     }
 
     /**
-     * Returns the player's active race
-     *
-     * @return the player's active race
-     */
-    Optional<Race> getRace();
-
-    /**
      * @deprecated replaced with {@link #getRace()};
      */
+    @Deprecated
     default Race getActiveRace() {
         return getRace().orElse(null);
     }
@@ -45,9 +39,24 @@ public interface RacePlayer {
     /**
      * Returns the player's active race
      *
+     * @return the player's active race
+     */
+    Optional<Race> getRace();
+
+    /**
+     * @deprecated replaced with {@link #setRace(Race)};
+     */
+    @Deprecated
+    default void setActiveRace(Race race) {
+        setRace(race);
+    }
+
+    /**
+     * Sets the player's active race
+     *
      * @param race the player's active race
      */
-    void setActiveRace(Race race);
+    void setRace(Race race);
 
     /**
      * Returns the race data for the specified race

@@ -1,10 +1,12 @@
 package net.pwing.races.api.race.trigger;
 
+import net.pwing.races.api.race.trigger.condition.RaceCondition;
+
+import org.bukkit.entity.Player;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-import org.bukkit.entity.Player;
 
 /**
  * RaceTriggerManager API implementation
@@ -57,12 +59,14 @@ public interface RaceTriggerManager {
     void runTriggerPassives(Player player, RaceTrigger trigger);
 
     /**
-     * Runs the trigger passives from the given string list
+     * This method does nothing, so running it is pointless
      *
-     * @param player the player to run the passives for
-     * @param passives a string list of the trigger passives
+     * @deprecated use {@link #runTriggerPassives(Player, RaceTrigger)};
      */
-    void runTriggerPassives(Player player, List<String> passives);
+    @Deprecated
+    default void runTriggerPassives(Player player, List<RaceTriggerPassive> passives) {
+    }
+
     /**
      * Returns if the specified trigger is on delay
      *
@@ -80,6 +84,18 @@ public interface RaceTriggerManager {
      * @param delay the delay
      */
     void setDelay(Player player, String trigger, int delay);
+
+    /**
+     * Returns a map of all the registered trigger
+     * conditions with key being the name of the
+     * condition
+     *
+     * Key: the name of the condition
+     * Value: the condition
+     *
+     * @return a map of all the registered trigger conditions
+     */
+    Map<String, RaceCondition> getConditions();
 
     /**
      * Returns a map of the trigger passives with the key

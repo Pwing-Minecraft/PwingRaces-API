@@ -1,5 +1,12 @@
 package net.pwing.races.api.race.ability;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+
+import net.pwing.races.api.PwingRacesAPI;
+import net.pwing.races.api.race.trigger.RaceTriggerPassive;
+import net.pwing.races.api.race.trigger.condition.RaceCondition;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -8,8 +15,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * RaceAbility API implementation
@@ -33,8 +39,10 @@ public abstract class RaceAbility implements Listener {
     protected boolean cancelDefaultAction;
     protected boolean overrideDefaultAction;
 
-    protected List<String> allowedWorlds = new ArrayList<String>();
-    protected List<String> passives = new ArrayList<String>();
+    protected List<String> allowedWorlds = new ArrayList<>();
+
+    protected BiMap<String, RaceTriggerPassive> passives;
+    protected BiMap<String, RaceCondition> conditions;
 
     public RaceAbility(String internalName, String configPath, FileConfiguration config, String requirement) {
         this.internalName = internalName;
@@ -97,7 +105,21 @@ public abstract class RaceAbility implements Listener {
         this.overrideDefaultAction = config.getBoolean(configPath + ".override-default-action", false);
 
         this.allowedWorlds = config.getStringList(configPath + ".allowed-worlds");
-        this.passives = config.getStringList(configPath + ".run-passives");
+        this.passives = HashBiMap.create();
+        for (String passive : config.getStringList(configPath + ".run-passives")) {
+            String passiveName = passive.split(" ")[0];
+            if (PwingRacesAPI.getTriggerManager().getTriggerPassives().containsKey(passiveName)) {
+                this.passives.put(passive, PwingRacesAPI.getTriggerManager().getTriggerPassives().get(passiveName));
+            }
+        }
+
+        this.conditions = HashBiMap.create();
+        for (String condition : config.getStringList(configPath + ".conditions")) {
+            String conditionName = condition.split(" ")[0];
+            if (PwingRacesAPI.getTriggerManager().getConditions().containsKey(conditionName)) {
+                this.conditions.put(condition, PwingRacesAPI.getTriggerManager().getConditions().get(conditionName));
+            }
+        }
     }
 
     /**
@@ -304,21 +326,43 @@ public abstract class RaceAbility implements Listener {
     }
 
     /**
-     * Returns a string list of the passives that run when this ability is ran
+     * Returns the passives for this ability
      *
-     * @return a string list of the passives that run when this ability is ran
+     * @return the passives for this ability
      */
-    public List<String> getPassives() {
-        return passives;
+    public Collection<RaceTriggerPassive> getPassives() {
+        return Collections.unmodifiableCollection(passives.values());
     }
 
     /**
-     * Sets the passives for the ability when it's ran
+     * Returns the passive (string) value from the given
+     * {@link RaceTriggerPassive}
      *
-     * @param passives a string list of passives that run when when this ability is ran
+     * @param passive the trigger passive
+     * @return the passive value from the given passive
      */
-    public void setPassives(List<String> passives) {
-        this.passives = passives;
+    public Optional<String> getPassiveValue(RaceTriggerPassive passive) {
+        return Optional.ofNullable(passives.inverse().get(passive));
+    }
+
+    /**
+     * Returns the conditions of the trigger
+     *
+     * @return the conditions of the trigger
+     */
+    public Collection<RaceCondition> getConditions() {
+        return Collections.unmodifiableCollection(conditions.values());
+    }
+
+    /**
+     * Returns the condition (string) value from the given
+     * {@link RaceCondition}
+     *
+     * @param condition the condition
+     * @return the condition value from the given condition
+     */
+    public Optional<String> getConditionValue(RaceCondition condition) {
+        return Optional.ofNullable(conditions.inverse().get(condition));
     }
 
     /**

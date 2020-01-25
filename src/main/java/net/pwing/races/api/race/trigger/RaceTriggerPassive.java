@@ -20,9 +20,18 @@ public abstract class RaceTriggerPassive {
      * Should not be called normally, instead use {@link #runPassive(Player, String)}
      *
      * @param player the player to run the trigger passive on
-     * @param str the config string
+     * @param args the arguments
      */
-    public abstract void runTriggerPassive(Player player, String str);
+    public void runTriggerPassive(Player player, String[] args) {
+    }
+
+    /**
+     * @deprecated replaced with {@link #runTriggerPassive(Player, String[])};
+     */
+    @Deprecated
+    public void runTriggerPassive(Player player, String str) {
+        runTriggerPassive(player, str.split(" "));
+    }
 
     /**
      * Safely runs the trigger passive given the string
@@ -36,7 +45,7 @@ public abstract class RaceTriggerPassive {
         if (!name.equalsIgnoreCase(split[0]))
             return;
 
-        runTriggerPassive(player, str);
+        runTriggerPassive(player, split);
     }
 
     /**

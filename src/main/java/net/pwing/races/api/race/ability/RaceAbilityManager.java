@@ -77,6 +77,14 @@ public interface RaceAbilityManager {
     void setCooldown(Player player, String internalAbilityName, double amount);
 
     /**
+     * Runs the passives for the given ability
+     *
+     * @param player the player to run the passives for
+     * @param ability the ability to receive the passives from
+     */
+    void runPassives(Player player, RaceAbility ability);
+
+    /**
      * Returns a new ability from a configuration file
      *
      * @param internalName the internal name of the ability

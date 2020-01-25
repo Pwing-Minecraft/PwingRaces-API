@@ -1,8 +1,14 @@
 package net.pwing.races.api.race.trigger;
 
-import java.util.List;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+
+import net.pwing.races.api.PwingRacesAPI;
+import net.pwing.races.api.race.trigger.condition.RaceCondition;
 
 import org.bukkit.configuration.file.FileConfiguration;
+
+import java.util.*;
 
 /**
  * RaceTrigger API implementation
@@ -17,7 +23,9 @@ public class RaceTrigger {
 
     private int delay;
     private int chance;
-    private List<String> passives;
+
+    private Multimap<String, RaceTriggerPassive> passives;
+    private Multimap<String, RaceCondition> conditions;
 
     /**
      * Constructs a new RaceTrigger object
@@ -44,7 +52,22 @@ public class RaceTrigger {
         this.trigger = config.getString(configPath + ".trigger");
         this.delay = config.getInt(configPath + ".delay");
         this.chance = config.getInt(configPath + ".chance");
-        this.passives = config.getStringList(configPath + ".run-passives");
+
+        this.passives = ArrayListMultimap.create();
+        for (String passive : config.getStringList(configPath + ".run-passives")) {
+            String passiveName = passive.split(" ")[0];
+            if (PwingRacesAPI.getTriggerManager().getTriggerPassives().containsKey(passiveName)) {
+                this.passives.put(passive, PwingRacesAPI.getTriggerManager().getTriggerPassives().get(passiveName));
+            }
+        }
+
+        this.conditions = ArrayListMultimap.create();
+        for (String condition : config.getStringList(configPath + ".conditions")) {
+            String conditionName = condition.split(" ")[0];
+            if (PwingRacesAPI.getTriggerManager().getConditions().containsKey(conditionName)) {
+                this.conditions.put(condition, PwingRacesAPI.getTriggerManager().getConditions().get(conditionName));
+            }
+        }
     }
 
     /**
@@ -139,20 +162,50 @@ public class RaceTrigger {
     }
 
     /**
-     * Returns a string list of the trigger passives
+     * Returns the trigger passives
      *
-     * @return a string list of the trigger passives
+     * @return the trigger passives
      */
-    public List<String> getPassives() {
-        return passives;
+    public Collection<RaceTriggerPassive> getPassives() {
+        return Collections.unmodifiableCollection(passives.values());
     }
 
     /**
-     * Sets the string list of the trigger passives
+     * Returns the passive (string) value from the given
+     * {@link RaceTriggerPassive}
      *
-     * @param passives a string list of the trigger passives
+     * @param passive the trigger passive
+     * @return the passive value from the given trigger passive
      */
-    public void setPassives(List<String> passives) {
-        this.passives = passives;
+    public Optional<String> getPassiveValue(RaceTriggerPassive passive) {
+        for (Map.Entry<String, RaceTriggerPassive> entry : passives.entries()) {
+            if (entry.getValue().equals(passive))
+                return Optional.of(entry.getKey());
+        }
+        return Optional.empty();
+    }
+
+    /**
+     * Returns the conditions of the trigger
+     *
+     * @return the conditions of the trigger
+     */
+    public Collection<RaceCondition> getConditions() {
+        return Collections.unmodifiableCollection(conditions.values());
+    }
+
+    /**
+     * Returns the condition (string) value from the given
+     * {@link RaceCondition}
+     *
+     * @param condition the condition
+     * @return the condition value from the given condition
+     */
+    public Optional<String> getConditionValue(RaceCondition condition) {
+        for (Map.Entry<String, RaceCondition> entry : conditions.entries()) {
+            if (entry.getValue().equals(condition))
+                return Optional.of(entry.getKey());
+        }
+        return Optional.empty();
     }
 }
