@@ -29,4 +29,13 @@ public enum EquationOperator {
 
         return EquationOperator.EQUAL;
     }
+
+    /**
+     * Returns the operator character
+     *
+     * @return the operator character
+     */
+    public char getChar() {
+        return operator;
+    }
 }
