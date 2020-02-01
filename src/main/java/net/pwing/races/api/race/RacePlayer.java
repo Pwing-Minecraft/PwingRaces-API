@@ -1,5 +1,7 @@
 package net.pwing.races.api.race;
 
+import net.pwing.races.api.util.math.EquationResult;
+
 import org.bukkit.OfflinePlayer;
 
 import java.util.Map;
@@ -86,4 +88,18 @@ public interface RacePlayer {
      * @return the data map for the player's races
      */
     Map<String, RaceData> getRaceDataMap();
+
+    /**
+     * Returns a map of temporary attribute values the player
+     * currently has applied. These are non-persistent
+     * and in most cases are removed shortly after they
+     * are applied
+     *
+     * Key: the name of the attribute
+     * Value: the value of the attribute
+     *
+     * @return a map of temporary attribute values
+     */
+    Map<String, EquationResult> getTemporaryAttributes();
+
 }
