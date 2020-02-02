@@ -162,50 +162,26 @@ public class RaceTrigger {
     }
 
     /**
-     * Returns the trigger passives
+     * Returns the passives
      *
-     * @return the trigger passives
+     * Key: the full passive
+     * Value(s): the passive(s)
+     *
+     * @return the passives
      */
-    public Collection<RaceTriggerPassive> getPassives() {
-        return Collections.unmodifiableCollection(passives.values());
+    public Map<String, Collection<RaceTriggerPassive>> getPassives() {
+        return passives.asMap();
     }
 
     /**
-     * Returns the passive (string) value from the given
-     * {@link RaceTriggerPassive}
+     * Returns the conditions
      *
-     * @param passive the trigger passive
-     * @return the passive value from the given trigger passive
-     */
-    public Optional<String> getPassiveValue(RaceTriggerPassive passive) {
-        for (Map.Entry<String, RaceTriggerPassive> entry : passives.entries()) {
-            if (entry.getValue().equals(passive))
-                return Optional.of(entry.getKey());
-        }
-        return Optional.empty();
-    }
-
-    /**
-     * Returns the conditions of the trigger
+     * Key: the full condition
+     * Value(s): the condition(s)
      *
-     * @return the conditions of the trigger
+     * @return the conditions
      */
-    public Collection<RaceCondition> getConditions() {
-        return Collections.unmodifiableCollection(conditions.values());
-    }
-
-    /**
-     * Returns the condition (string) value from the given
-     * {@link RaceCondition}
-     *
-     * @param condition the condition
-     * @return the condition value from the given condition
-     */
-    public Optional<String> getConditionValue(RaceCondition condition) {
-        for (Map.Entry<String, RaceCondition> entry : conditions.entries()) {
-            if (entry.getValue().equals(condition))
-                return Optional.of(entry.getKey());
-        }
-        return Optional.empty();
+    public Map<String, Collection<RaceCondition>> getConditions() {
+        return conditions.asMap();
     }
 }
