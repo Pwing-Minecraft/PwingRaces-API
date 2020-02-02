@@ -51,7 +51,7 @@ public class RaceTrigger {
     private void loadDataFromConfig(String configPath, FileConfiguration config) {
         this.trigger = config.getString(configPath + ".trigger");
         this.delay = config.getInt(configPath + ".delay");
-        this.chance = config.getInt(configPath + ".chance");
+        this.chance = config.getInt(configPath + ".chance", 100);
 
         this.passives = ArrayListMultimap.create();
         for (String passive : config.getStringList(configPath + ".run-passives")) {
