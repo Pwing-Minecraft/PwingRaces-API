@@ -64,6 +64,7 @@ public class RaceTrigger {
         this.conditions = ArrayListMultimap.create();
         for (String condition : config.getStringList(configPath + ".conditions")) {
             String conditionName = condition.split(" ")[0];
+            conditionName = conditionName.replace("!", ""); // for inverse conditions
             if (PwingRacesAPI.getTriggerManager().getConditions().containsKey(conditionName)) {
                 this.conditions.put(condition, PwingRacesAPI.getTriggerManager().getConditions().get(conditionName));
             }
