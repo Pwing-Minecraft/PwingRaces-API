@@ -87,6 +87,6 @@ repositories {
 Add the dependency:
 ```gradle
   dependencies {
-    compile 'com.github.Pwing-Minecraft:PwingRaces-API:Tag'
+    compileOnly 'com.github.Pwing-Minecraft:PwingRaces-API:Tag'
   }
 ```
