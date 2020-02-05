@@ -77,10 +77,9 @@ Add the dependency:
 
 Add the repository:
 ```gradle
-allprojects {
-  repositories {
-    ...
-    maven { url 'https://jitpack.io' }
+repositories {
+  maven { 
+    url 'https://jitpack.io' 
   }
 }
 ```
@@ -88,6 +87,6 @@ allprojects {
 Add the dependency:
 ```gradle
   dependencies {
-    implementation 'com.github.Pwing-Minecraft:PwingRaces-API:Tag'
+    compile 'com.github.Pwing-Minecraft:PwingRaces-API:Tag'
   }
 ```

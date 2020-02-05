@@ -373,13 +373,7 @@ public abstract class RaceAbility implements Listener {
      * @return if the ability can run with the specified item
      */
     public boolean canRun(Player player, ItemStack stack) {
-        ItemStack hand;
-        try {
-            hand = player.getInventory().getItemInMainHand();
-            // Catch this, since 1.8 versions don't have the method above
-        } catch (Throwable ex) {
-            hand = player.getInventory().getItemInHand();
-        }
+        ItemStack hand = player.getInventory().getItemInMainHand();
 
         if (hand == null)
             return false;
@@ -397,8 +391,7 @@ public abstract class RaceAbility implements Listener {
             if (!hand.getItemMeta().hasDisplayName())
                 return false;
 
-            if (!hand.getItemMeta().getDisplayName().equals(stack.getItemMeta().getDisplayName()))
-                return false;
+            return hand.getItemMeta().getDisplayName().equals(stack.getItemMeta().getDisplayName());
         }
 
         return true;
@@ -434,7 +427,6 @@ public abstract class RaceAbility implements Listener {
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(name);
         item.setItemMeta(meta);
-
         return item;
     }
 }

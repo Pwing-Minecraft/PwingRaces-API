@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+group = 'net.pwing.races'
+version = '1.4.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url 'https://hub.spigotmc.org/nexus/content/repositories/public/'
+    }
+}
+
+dependencies {
+    compile "org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT"
+}
