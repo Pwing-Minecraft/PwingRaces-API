@@ -4,8 +4,10 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * RaceModule API implementation. For creating modules,
@@ -29,21 +31,20 @@ public abstract class RaceModule {
      * Sets up the config file for the module
      */
     public void setupModuleConfig() {
-        File filePath = new File(plugin.getDataFolder() + "/modules/" + getName() + "/");
-        if (!filePath.exists())
-            filePath.mkdirs();
-
-        File file = new File(filePath,  getName() + "Config.yml");
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                plugin.getLogger().severe("Could not create " + getName() + "Config.yml !!!");
-                e.printStackTrace();
+        try {
+            Path moduleDir = Paths.get(plugin.getDataFolder().toString(), "modules", getName());
+            if (Files.notExists(moduleDir)) {
+                Files.createDirectories(moduleDir);
             }
+            Path modulePath = Paths.get(moduleDir.toString(), getName() + "Config.yml");
+            if (Files.notExists(modulePath)) {
+                Files.createFile(modulePath);
+            }
+            config = YamlConfiguration.loadConfiguration(Files.newBufferedReader(modulePath));
+        } catch (IOException e) {
+            plugin.getLogger().severe("Could not create " + getName() + "Config.yml !!!");
+            e.printStackTrace();
         }
-
-        config = YamlConfiguration.loadConfiguration(file);
     }
 
     /**
