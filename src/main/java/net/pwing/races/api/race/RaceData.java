@@ -81,6 +81,20 @@ public interface RaceData {
     void setUsedSkillpoints(int usedSkillpoints);
 
     /**
+     * Returns if the player has played this race
+     *
+     * @return if the player has played this race
+     */
+    boolean hasPlayed();
+
+    /**
+     * Sets if the player has played this race
+     *
+     * @param played if the player has played this race
+     */
+    void setHasPlayed(boolean played);
+
+    /**
      * Returns if the player has purchased the specified element for their race
      *
      * @param skilltree the skilltree you want to check for in the player's race
