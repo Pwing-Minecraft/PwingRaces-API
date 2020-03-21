@@ -7,6 +7,8 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
 
+import java.util.Optional;
+
 /**
  * Runs when a player changes their race
  *
@@ -42,8 +44,8 @@ public class RaceChangeEvent extends PlayerEvent implements Cancellable {
      *
      * @return the player's race before this event is called
      */
-    public Race getOldRace() {
-        return oldRace;
+    public Optional<Race> getOldRace() {
+        return Optional.ofNullable(oldRace);
     }
 
     /**
