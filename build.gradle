@@ -1,6 +1,6 @@
 apply plugin: 'java'
 
-group = 'net.pwing.races'
+group = 'net.pwing.races.api'
 version = '1.4.1'
 
 repositories {
