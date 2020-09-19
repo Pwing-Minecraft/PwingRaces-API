@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 group = 'net.pwing.races.api'
-version = '1.4.5'
+version = '1.4.6'
 
 repositories {
     jcenter()
