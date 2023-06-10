@@ -121,6 +121,20 @@ public interface Race {
     void setRaceItems(Map<String, ItemStack> raceItems);
 
     /**
+     * Returns the item definitions within the race.
+     *
+     * @return the item definitions within the race
+     */
+    Map<String, RaceItemDefinition> getItemDefinitions();
+
+    /**
+     * Sets the item definitions of the race.
+     *
+     * @param itemDefinitions sets the item definitions of the race
+     */
+    void setItemDefinitions(Map<String, RaceItemDefinition> itemDefinitions);
+
+    /**
      * Returns the data for the race's icon
      *
      * @return the data for the race's icons
