@@ -18,6 +18,7 @@ import java.util.*;
 public class RaceTrigger {
 
     private String internalName;
+    private String configPath;
     private String requirement;
     private String trigger;
 
@@ -37,6 +38,7 @@ public class RaceTrigger {
      */
     public RaceTrigger(String internalName, String configPath, FileConfiguration config, String requirement) {
         this.internalName = internalName;
+        this.configPath = configPath;
         this.requirement = requirement;
 
         loadDataFromConfig(configPath, config);
@@ -69,6 +71,32 @@ public class RaceTrigger {
                 this.conditions.put(condition, PwingRacesAPI.getTriggerManager().getConditions().get(conditionName));
             }
         }
+    }
+
+    /**
+     * Saves the trigger to the config
+     *
+     * @param configPath the path to save the trigger to
+     * @param config the config to save the trigger to
+     */
+    public void saveDataToConfig(String configPath, FileConfiguration config) {
+        config.set(configPath + ".trigger", this.trigger);
+        config.set(configPath + ".delay", this.delay);
+        config.set(configPath + ".chance", this.chance);
+
+        List<String> runPassives = new ArrayList<>();
+        for (String passive : this.passives.keySet()) {
+            runPassives.add(passive);
+        }
+
+        config.set(configPath + ".run-passives", runPassives);
+
+        List<String> conditions = new ArrayList<>();
+        for (String condition : this.conditions.keySet()) {
+            conditions.add(condition);
+        }
+
+        config.set(configPath + ".conditions", conditions);
     }
 
     /**
@@ -106,6 +134,15 @@ public class RaceTrigger {
      */
     public void setRequirement(String requirement) {
         this.requirement = requirement;
+    }
+
+    /**
+     * Gets the config path of the trigger.
+     *
+     * @return the config path of the trigger
+     */
+    public String getConfigPath() {
+        return this.configPath;
     }
 
     /**

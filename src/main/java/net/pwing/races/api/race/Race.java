@@ -28,6 +28,13 @@ public interface Race {
     String getName();
 
     /**
+     * Sets the name of the race.
+     *
+     * @param name the name of the race
+     */
+    void setName(String name);
+
+    /**
      * Returns the display name of the race
      *
      * @return the display name of the race

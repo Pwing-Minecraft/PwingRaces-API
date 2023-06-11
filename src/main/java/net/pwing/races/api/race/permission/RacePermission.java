@@ -8,6 +8,13 @@ package net.pwing.races.api.race.permission;
 public interface RacePermission {
 
     /**
+     * Returns the config path of the permission
+     *
+     * @return the config path of the permission
+     */
+    String getConfigPath();
+
+    /**
      * Returns the permission node
      *
      * @return the permission node

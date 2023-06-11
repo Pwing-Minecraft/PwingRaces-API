@@ -10,6 +10,13 @@ import net.pwing.races.api.util.math.EquationResult;
 public interface RaceAttribute {
 
     /**
+     * Gets the config path of the attribute.
+     *
+     * @return the config path of the attribute
+     */
+    String getConfigPath();
+
+    /**
      * Returns the attribute name
      *
      * @return the attribute name
