@@ -280,4 +280,9 @@ public interface Race {
      * @param racePermissionsMap a map of the race permissions
      */
     void setRacePermissionsMap(Map<String, List<RacePermission>> racePermissionsMap);
+
+    /**
+     * Saves the race to disk.
+     */
+    void save();
 }

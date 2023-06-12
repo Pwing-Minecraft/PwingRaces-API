@@ -26,6 +26,7 @@ public abstract class RaceAbility implements Listener {
 
     protected String requirement;
     protected String internalName;
+    protected String configPath;
 
     protected double cooldown;
 
@@ -46,6 +47,7 @@ public abstract class RaceAbility implements Listener {
 
     public RaceAbility(String internalName, String configPath, FileConfiguration config, String requirement) {
         this.internalName = internalName;
+        this.configPath = configPath;
         this.requirement = requirement;
 
         loadDataFromConfig(configPath, config);
@@ -123,6 +125,43 @@ public abstract class RaceAbility implements Listener {
         }
     }
 
+    public void saveDataToConfig(String configPath, FileConfiguration config) {
+        config.set(configPath + ".cooldown", cooldown);
+
+        if (abilityItems.length > 0) {
+            String abilityItemStr = "";
+            for (ItemStack stack : abilityItems) {
+                abilityItemStr += getStringFromItem(stack) + ",";
+            }
+            config.set(configPath + ".ability-item", abilityItemStr.substring(0, abilityItemStr.length() - 1));
+        }
+
+        if (leftClickAbilityItems.length > 0) {
+            String leftClickAbilityItemStr = "";
+            for (ItemStack stack : leftClickAbilityItems) {
+                leftClickAbilityItemStr += getStringFromItem(stack) + ",";
+            }
+            config.set(configPath + ".left-click-ability-item", leftClickAbilityItemStr.substring(0, leftClickAbilityItemStr.length() - 1));
+        }
+
+        if (consumeAbilityItems.length > 0) {
+            String consumeAbilityItemStr = "";
+            for (ItemStack stack : consumeAbilityItems) {
+                consumeAbilityItemStr += getStringFromItem(stack) + ",";
+            }
+            config.set(configPath + ".consume-ability-item", consumeAbilityItemStr.substring(0, consumeAbilityItemStr.length() - 1));
+        }
+
+        config.set(configPath + ".required-permission", requiredPermission);
+        config.set(configPath + ".cooldown-message", cooldownMessage);
+        config.set(configPath + ".cancel-default-action", cancelDefaultAction);
+        config.set(configPath + ".override-default-action", overrideDefaultAction);
+
+        config.set(configPath + ".allowed-worlds", allowedWorlds);
+        config.set(configPath + ".run-passives", passives.keySet());
+        config.set(configPath + ".conditions", conditions.keySet());
+    }
+
     /**
      * Runs the ability
      *
@@ -130,6 +169,15 @@ public abstract class RaceAbility implements Listener {
      * @return if the ability ran
      */
     public abstract boolean runAbility(Player player);
+
+    /**
+     * Returns the config path for the ability
+     *
+     * @return the config path for the ability
+     */
+    public String getConfigPath() {
+        return configPath;
+    }
 
     /**
      * Returns the requirement for the ability
@@ -145,7 +193,7 @@ public abstract class RaceAbility implements Listener {
      * Sets the requirement for the ability
      * (e.g. none, level requirement or skillpoint requirement)
      *
-     * @param requirement
+     * @param requirement the requirement for the ability
      */
     public void setRequirement(String requirement) {
         this.requirement = requirement;
@@ -413,5 +461,17 @@ public abstract class RaceAbility implements Listener {
         meta.setDisplayName(name);
         item.setItemMeta(meta);
         return item;
+    }
+
+    private String getStringFromItem(ItemStack item) {
+        if (item == null)
+            return null;
+
+        String str = item.getType().toString();
+
+        if (item.hasItemMeta() && item.getItemMeta().hasDisplayName())
+            str += "|" + item.getItemMeta().getDisplayName();
+
+        return str;
     }
 }
