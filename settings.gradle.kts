@@ -1,1 +1,1 @@
-rootProject.name = 'PwingRaces-API'
+rootProject.name = "PwingRaces-API"
