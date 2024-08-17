@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "net.pwing.races.api"
-version = "1.5.1-SNAPSHOT"
+version = "1.5.1"
 
 repositories {
     mavenCentral()
